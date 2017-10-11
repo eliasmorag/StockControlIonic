@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar color="light-red">
+      <ion-title>Consulta</ion-title>
+    </ion-navbar>
+</ion-header>
+  
+<ion-content padding> 
+  <button ion-button full (click)="scanBarcode()">SCAN</button>
+  <div *ngIf="producto">
+
+    <ion-card>
+        <ion-card-header><strong>ID: {{producto.id}}</strong></ion-card-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <img src="{{producto.url}}" style="max-height:100px;width:auto;padding-left:20px;">                          
+            </ion-col>
+            <ion-col>
+                <ion-card-content>
+                    <p style="text-transform: uppercase;"><strong>{{producto.name}}</strong></p>
+                    <p>{{producto.descripcion}}</p>
+                    <p>{{producto.precio}}$</p>
+                </ion-card-content>  
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card>
+    
+
+    <ion-item>
+      <ion-label>Cantidad: </ion-label>
+        <ion-select [(ngModel)]="cantidad">
+          <ion-option value="1">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+          <ion-option value="4">4</ion-option>
+        </ion-select>
+      </ion-item>
+
+    <button ion-button full icon-left color="light-red" (click)="addToCart(producto)">
+      Agregar al carrito
+    </button>
+
+  </div>
+
+  <button ion-button full icon-left color="light-red" style="margin-top:20px;"(click)="goToCart()">
+    Ir al carrito
+  </button>
+
+</ion-content>
